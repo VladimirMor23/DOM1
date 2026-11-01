@@ -21,8 +21,8 @@
           </div>
           <div class="comment-footer">
             <div class="likes">
-              <span class="likes-counter">3</span>
-              <button class="like-button"></button>
+              <span  class="likes-counter">3</span>
+              <button data-like="true" class="like-button"></button>
             </div>
           </div>
         </li>
@@ -38,8 +38,8 @@
           </div>
           <div class="comment-footer">
             <div class="likes">
-              <span class="likes-counter">75</span>
-              <button class="like-button -active-like"></button>
+              <span data-like="true"  class="likes-counter">75</span>
+              <button data-like="true" class="like-button -active-like"></button>
             </div>
           </div>
         </li>
@@ -112,7 +112,7 @@
       <div class="comment-footer">
         <div class="likes">
           <span class="likes-counter">0</span>
-          <button class="like-button">❤️</button>
+          <button data-like="true" class="like-button"></button>
         </div>
       </div>
     </li>
@@ -126,6 +126,31 @@
       
      });
    
+ commentsList.addEventListener('click', (event) => {
+  
+  const btn = event.target.closest('[data-like]');
+
+
+  if (btn === null) {
+    return;
+  }
+
+  
+  const counterEl = btn.parentElement.querySelector('.likes-counter');
+  if (!counterEl) return;
+  
+  let count = parseInt(counterEl.textContent.trim(), 10) || 0;
+  const isLiked = btn.classList.toggle('active-like');
+  
+  count = isLiked ? count + 1 : count - 1;
+  counterEl.textContent = count;
+
+  if (isLiked) btn.classList.add('-active-like');
+  else btn.classList.remove('-active-like');
+});
+
+
+  
    
 
         
