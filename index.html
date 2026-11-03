@@ -38,8 +38,8 @@
           </div>
           <div class="comment-footer">
             <div class="likes">
-              <span data-like="true"  class="likes-counter">75</span>
-              <button data-like="true" class="like-button -active-like"></button>
+              <span class="likes-counter">75</span>
+              <button class="like-button"></button>
             </div>
           </div>
         </li>
@@ -77,11 +77,11 @@
       textInput.classList.remove('error');
    
 
-      if (nameInput.value === ""){
+      if (nameInput.value.trim() === ""){
         nameInput.classList = ('error')
         return;
       }
-      if (textInput.value === ""){
+      if (textInput.value.trim() === ""){
         textInput.classList = ('error')
         return;
       }
